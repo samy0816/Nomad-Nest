@@ -600,7 +600,7 @@
         listingTitle: '<%= listing.title %>'
       });
 
-      const response = await fetch('/listings/api/generate-itinerary', {
+  const response = await fetch('https://nomad-nest-dzm5.onrender.com/listings/api/generate-itinerary', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

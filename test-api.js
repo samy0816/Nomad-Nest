@@ -3,7 +3,7 @@ const axios = require('axios');
 async function testItineraryAPI() {
     try {
         console.log('Testing API endpoint...');
-        const response = await axios.post('http://localhost:8080/api/generate-itinerary', {
+    const response = await axios.post('https://nomad-nest-dzm5.onrender.com/api/generate-itinerary', {
             location: 'Paris',
             country: 'France',
             budget: 'moderate',
