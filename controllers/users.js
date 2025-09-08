@@ -1,4 +1,4 @@
-const User = require("../models/user");
+const User = require("../models/User");
 
 module.exports.renderRegisterForm = (req, res) => {
     res.render("users/signup");
