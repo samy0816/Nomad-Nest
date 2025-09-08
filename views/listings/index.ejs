@@ -1,0 +1,147 @@
+<%- layout('layouts/boilerplate.ejs') %>
+
+<!-- Full-page video background and overlay -->
+<div class="hero-section position-relative w-100" style="min-height: 220px; overflow: hidden; min-width: 700px;">
+  <video autoplay muted loop playsinline class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover" style="z-index:0;">
+    <source src="/2406638-uhd_3840_2160_24fps.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <div class="position-absolute top-0 start-0 w-100 h-100" style="background: linear-gradient(to bottom, rgba(0, 0, 0, 0.788) 0%, rgba(0,0,0,0.45) 60%, rgba(255,255,255,0.0) 80%, #fff 100%); z-index:1;"></div>
+  <div class="hero-content position-relative d-flex flex-column align-items-center justify-content-center text-center w-100 h-100" style="z-index:2;">
+    <h1 class="mb-3" style="color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,0.5); font-weight: 700; font-size: 2.8rem; text-align:center;">Welcome to NomadNest</h1>
+    <p class="lead mb-4" style="color: #f3f3f3; text-shadow: 0 1px 4px rgba(0,0,0,0.4); font-size: 1.3rem;">Find your perfect stay</p>
+    
+  </div>
+</div>
+
+<div class="container mt-5">
+  <div class="hero-content position-relative d-flex flex-column align-items-center justify-content-center text-center w-100 h-100" style="z-index:2;">
+  <h2 class="mb-4" style="color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,0.5); font-size: 2rem;">Popular Filters</h2>
+    <div id="filters" class="d-flex flex-wrap justify-content-center gap-3 mb-3">
+      <a href="/listings?search=trending" class="text-decoration-none">
+        <div class="filter">
+          <div><i class="fa-solid fa-fire"></i></div> 
+          <p>Trending</p> 
+        </div>
+      </a>
+      <a href="/listings?search=room" class="text-decoration-none">
+        <div class="filter">
+          <div><i class="fa-solid fa-bed"></i></div> 
+          <p>Rooms</p> 
+        </div>
+      </a>
+      <a href="/listings?search=city" class="text-decoration-none">
+        <div class="filter">
+          <div><i class="fa-solid fa-mountain-city"></i></div> 
+          <p>Iconic Cities</p> 
+        </div>
+      </a>
+      <a href="/listings?search=hiking" class="text-decoration-none">
+        <div class="filter">
+          <div><i class="fa-solid fa-person-hiking"></i></div> 
+          <p>Hiking Specials</p> 
+        </div>
+      </a>
+      <a href="/listings?search=mountain" class="text-decoration-none">
+        <div class="filter">
+          <div><i class="fa-solid fa-mountain"></i></div> 
+          <p>Mountains</p> 
+        </div>
+      </a>
+      <a href="/listings?search=beach" class="text-decoration-none">
+        <div class="filter">
+          <div><i class="fa-solid fa-umbrella-beach"></i></div> 
+          <p>Beaches</p> 
+        </div>
+      </a>
+      <a href="/listings?search=urban" class="text-decoration-none">
+        <div class="filter">
+          <div><i class="fa-solid fa-city"></i></div> 
+          <p>Urban</p> 
+        </div>
+      </a>
+      <a href="/listings?search=nature" class="text-decoration-none">
+        <div class="filter">
+          <div><i class="fa-solid fa-tree"></i></div> 
+          <p>Nature</p> 
+        </div>
+      </a>
+      <div class="form-check form-switch mt-3">
+        <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
+        <label class="form-check-label" for="switchCheckDefault">Include GST</label>
+      </div>
+    </div>
+
+    <!-- Price Filter -->
+    <div class="mt-10 mb-4">
+      <h5 style="color: white;">Filter by Price</h5>
+      <form action="/listings" method="GET" class="row g-3">
+        <div class="col-md-4">
+          <input type="number" name="minPrice" class="form-control" placeholder="Min Price" value="<%= minPrice || '' %>">
+        </div>
+        <div class="col-md-4">
+          <input type="number" name="maxPrice" class="form-control" placeholder="Max Price" value="<%= maxPrice || '' %>">
+        </div>
+        <div class="col-md-4">
+          <button type="submit" class="btn btn-primary">Apply Filter</button>
+        </div>
+      </form>
+    </div>
+    </div>
+  <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-5">
+    
+    <% for(let listing of allListings){%>
+      <div class="col mb-4">
+        <a href="/listings/<%= listing._id %>" class="text-decoration-none">
+          <div class="card h-100 shadow-sm">
+            <img src="<%= listing.image.url %>" class="card-img-top" alt="<%= listing.title %>">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title"><%= listing.title %></h5>
+              <p class="card-text flex-grow-1"><%= listing.description.substring(0, 100) %>...</p>
+              <div class="mt-auto">
+                <p class="card-text mb-1">
+                  <strong class="maincard" data-price="<%= listing.price %>">
+                    ₹ <%= listing.price ? listing.price.toLocaleString("en-IN") : "N/A" %>
+                  </strong>
+                  <span class="gst-info text-muted" style="display: none; font-size: 0.9rem;"></span> /per night
+                </p>
+                <small class="text-muted"><%= listing.location %>, <%= listing.country %></small>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    <% } %>
+  </div>
+</div>
+
+<script>
+  const switchInput = document.querySelector("#switchCheckDefault");
+  
+  switchInput.addEventListener("change", () => {
+    const cards = document.querySelectorAll(".maincard");
+    
+    cards.forEach(card => {
+      const price = parseFloat(card.dataset.price);
+      const gstAmount = Math.round(price * 0.18);
+      const gstSpan = card.nextElementSibling;
+      
+      if (switchInput.checked) {
+        gstSpan.innerText = `(+ ₹${gstAmount.toLocaleString("en-IN")} GST)`;
+        gstSpan.style.display = "inline";
+      } else {
+        gstSpan.innerText = "";
+        gstSpan.style.display = "none";
+      }
+    });
+  });
+
+  // Filter click effects
+  const filters = document.querySelectorAll('.filter');
+  filters.forEach(filter => {
+    filter.addEventListener('click', () => {
+      filters.forEach(f => f.classList.remove('active'));
+      filter.classList.add('active');
+    });
+  });
+</script>

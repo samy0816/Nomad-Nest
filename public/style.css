@@ -1,0 +1,437 @@
+@font-face {
+    font-family: "Airbnb";
+    src: url("/AirbnbCereal_W_Bk.otf");
+}
+
+:root {
+    --primary-color: #5B2A82; /* Premium Purple */
+    --secondary-color: #f7f7f7;
+    --text-color: #333;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+body {
+    font-family: "Airbnb", "Plus Jakarta Sans", Arial, Helvetica, sans-serif;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}
+
+.fa-solid{
+    font-size: 30px;
+    color: var(--primary-color);
+}
+
+.nav-link{
+    font-weight:550;
+    transition: var(--transition);
+}
+
+.nav-link:hover {
+        color: #5B2A82 !important;
+}
+
+.navbar{
+    height: 5rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+    box-shadow: var(--shadow);
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color) !important;
+}
+
+/* Show Page Enhancements */
+.sticky-top {
+    transition: var(--transition);
+}
+
+.form-check-card .form-check-input {
+    display: none;
+}
+
+.form-check-card .card {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid #e9ecef;
+    background: #fff;
+}
+
+.form-check-card .card:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 2px 8px rgba(124, 58, 237, 0.1);
+}
+
+.form-check-card .form-check-input:checked + .card {
+    border-color: var(--primary-color);
+    background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.2);
+}
+
+.review-card {
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    background: #fff;
+}
+
+.review-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+}
+
+.booking-card {
+    position: sticky;
+    top: 100px;
+}
+
+/* Enhanced Image Gallery */
+.image-gallery img {
+    transition: var(--transition);
+}
+
+.image-gallery img:hover {
+    transform: scale(1.02);
+}
+
+/* Property Features */
+.property-feature {
+    transition: var(--transition);
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.property-feature:hover {
+    background-color: #f8f9fa;
+    transform: translateY(-2px);
+}
+
+/* Booking Form Styling */
+.booking-form .form-control:focus,
+.booking-form .form-select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(124, 58, 237, 0.15);
+}
+
+/* Modern Search Bar */
+.input-group .form-control {
+    transition: var(--transition);
+}
+
+.input-group .form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(124, 58, 237, 0.25);
+}
+
+.input-group .btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    transition: var(--transition);
+}
+
+.input-group .btn-primary:hover {
+    background-color: #6d28d9;
+    border-color: #6d28d9;
+    transform: scale(1.05);
+}
+
+.input-group-text {
+    transition: var(--transition);
+}
+
+.input-group:focus-within .input-group-text {
+    color: var(--primary-color) !important;
+}
+
+.container{
+    flex:1;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.foot-icons a {
+  color: var(--text-color);
+  transition: var(--transition);
+}
+
+.foot-icons a:hover {
+  color: var(--primary-color);
+  transform: scale(1.1);
+}
+
+  .filter {
+    display: inline-block;
+    text-align: center;
+    margin-right: 1rem;
+    opacity: 0.7;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    transition: var(--transition);
+    cursor: pointer;
+    background-color: #fff;
+    box-shadow: var(--shadow);
+  }
+
+  .filter:hover, .filter.active {
+    color: var(--primary-color);
+    opacity: 1;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    background-color: rgba(255, 56, 92, 0.1);
+  }
+
+  .filter i {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  #filters {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    overflow-x: auto;
+    padding: 1rem 0;
+    flex-wrap: nowrap;
+  }
+
+.card-text{
+    text-decoration:none !important;
+    color: var(--text-color);
+    font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.listing-card .card{
+    border: none;
+    margin-bottom: 3rem;
+    margin-right: 2rem;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.listing-card .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card-img-top{
+    border-radius: 1rem 1rem 0 0;
+    width: 100%;
+    object-fit: cover;
+    height: 200px;
+    transition: var(--transition);
+}
+
+.card-img-top:hover {
+    transform: scale(1.05);
+}
+
+.row a{
+    text-decoration: none !important;
+    box-shadow: none;
+}
+
+.showimg{
+    border-radius: 1rem !important;
+    width: 100% !important;
+    object-fit: cover !important;
+    height: 20rem; 
+}
+
+.form {
+    justify-content: center;
+    align-items: center;
+}
+
+.btn{
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 0.5rem;
+    transition: var(--transition);
+    font-weight: 600;
+}
+
+.btn:hover {
+    background-color: #e0314b;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(255, 56, 92, 0.3);
+}
+
+h3{
+    color: var(--primary-color);
+}
+
+.btns{
+    display: flex;
+    
+}
+.btns button{
+    margin-right: 1rem;
+}
+
+.alert{
+    text-align: center;
+    margin-top: 10px;
+    border-radius: 0.5rem;
+}
+
+.listing-card1{
+    border: none !important;
+    width: 100%;
+    box-shadow: var(--shadow);
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.signin{
+    display: flex;
+    align-items:flex-start;
+}
+.navbar-collapse {
+    background-color: #f8f9fa; /* match your navbar background */
+    padding: 1rem;
+    border-top: 1px solid #dee2e6;
+  }
+  
+  .navbar-nav .nav-link {
+    white-space: nowrap; /* prevents wrapping text */
+  }
+
+  .form-switch
+  {
+    margin-top: 45px;
+    margin-left: 11rem;
+    font-size: 20px;
+  }
+
+  @media (max-width: 768px) {
+    #filters {
+      justify-content: flex-start;
+      gap: 0.5rem;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+    }
+  
+    .filter {
+      flex: 0 0 auto;
+      width: auto;
+      margin-right: 0.5rem;
+      margin-top: 0;
+      padding: 0.5rem;
+    }
+  
+    .form-check {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+    
+    .form-switch {
+      margin-left: 1rem;
+    }
+    .showcard {
+      margin: auto !important;
+    }
+  }
+
+    
+  .form-switch
+  {
+    margin-left: 1rem;
+  }
+.hero-section {
+  background: linear-gradient(135deg, var(--primary-color) 0%, #e0314b 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+  opacity: 0.3;
+}
+
+.hero-section .container {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-section h1 {
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.hero-section p {
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* AI Itinerary Styles */
+.day-plan {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-left: 4px solid var(--primary-color);
+    transition: var(--transition);
+}
+
+.day-plan:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.form-check-label {
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.form-check-label:hover {
+    color: var(--primary-color);
+}
+
+.itinerary-result {
+    animation: fadeInUp 0.5s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.btn-primary:hover {
+    background-color: #6d28d9;
+    border-color: #6d28d9;
+    transform: translateY(-1px);
+}
+
+.card-header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #6d28d9 100%);
+}
